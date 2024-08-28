@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .botao {
+    height: 100px;
+    transition: 0.3s;
+    width: 100px;
+    border-radius: 50px;
+    font-size: 20px;
+    border: 3px solid red;
+        }
+        .botao:hover {
+    transform: scale(1.1);
+    background-color: red;
+        }
+        .numeros {
+            margin-left: 580px;
+            margin-top: 100px;
+            background-color: cyan;
+            display: inline-block;
+            border-radius: 50px;
+        }
+        #resultado {
+            height: 200px;
+            height: 100px;
+            width: 200px;
+            font-size: 30px;
+        }
+  
+    </style>
+</head>
+<body>
+    <div class="numeros">
+    <input id="resultado" type="text" readonly>
+    <br>
+    <button class="botao" onclick="maisnumero('1')">1</button>
+    <button class="botao" onclick="maisnumero('2')">2</button>
+    <button class="botao" onclick="maisnumero('3')">3</button>
+    <button class="botao" onclick="maisposicao('+')">+</button>
+    <br>
+    <button class="botao" onclick="maisnumero('4')">4</button>
+    <button class="botao" onclick="maisnumero('5')">5</button>
+    <button class="botao" onclick="maisnumero('6')">6</button>
+    <button class="botao" onclick="maisposicao('-')">-</button>
+    <br>
+    <button class="botao" onclick="maisnumero('7')">7</button>
+    <button class="botao" onclick="maisnumero('8')">8</button>
+    <button class="botao" onclick="maisnumero('9')">9</button>
+    <button class="botao" onclick="maisnumero('*')">*</button>
+    <br>
+    <button class="botao" onclick="acabar()">Clear</button>
+    <button class="botao" onclick="calcular()">=</button>
+    <button class="botao" onclick="maisposicao('/')">/</button>
+</div>
+    <script>
+         let expressao = ""
+        function maisnumero(numero) {
+    expressao += numero
+document.getElementById("resultado").value = expressao
+        }
+        function maisposicao(operador) {
+    expressao += operador
+    document.getElementById("resultado").value = expressao;
+        }
+        function calcular() {
+    try {
+   let resultado = eval(expressao)
+   document.getElementById("resultado").value = resultado;
+    }
+    catch {
+document.getElementById("resultado").value = "Erro"
+expressao = ""
+    }
+         }
+         function acabar() {
+        expressao = ""
+        document.getElementById("resultado").value = ""
+    }
+    </script>
+</body>
+</html>
